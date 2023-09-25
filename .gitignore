@@ -1,0 +1,21 @@
+# Ignore node_modules directory
+node_modules/
+
+
+# Ignore build output
+dist/
+out/
+build/
+target/
+
+# Ignore OS and editor-specific files
+.vscode/
+
+# Ignore package manager lock files
+package-lock.json
+
+# Ignore user-specific files
+.npmrc
+
+# Ignore TypeScript build output
+*.js.map
