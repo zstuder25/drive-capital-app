@@ -3,6 +3,7 @@
 ## Zach Studer
 
 ## Verify Install of node & npm
+Make sure you have node installed. You can install via https://docs.npmjs.com/downloading-and-installing-node-js-and-npm if needed.
 ```node -v```
 ```npm -v```
 
