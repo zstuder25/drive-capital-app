@@ -10,6 +10,7 @@ Then to verify:
 ```npm -v```
 
 ## Install dependencies
+The remaining commands will be from the root directory of this probject ```drive-capital-app/```
 ```npm install```
 
 ## To run the app
