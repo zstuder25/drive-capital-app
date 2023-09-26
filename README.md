@@ -4,7 +4,10 @@
 
 ## Verify Install of node & npm
 Make sure you have node installed. You can install via https://docs.npmjs.com/downloading-and-installing-node-js-and-npm if needed.
+Then to verify: 
+
 ```node -v```
+
 ```npm -v```
 
 ## Install dependencies
@@ -13,6 +16,7 @@ Make sure you have node installed. You can install via https://docs.npmjs.com/do
 ## To run the app
 
 ```npm start "</absolute/file/path/here>"```
+
 The index.txt file contains the same sample 
 
 ## Run unit tests
