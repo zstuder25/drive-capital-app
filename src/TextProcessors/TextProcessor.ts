@@ -36,6 +36,7 @@ export default class TextProcessor {
         switch (inputType) {
             case "Employee":
                 [ , employeeName, companyName ] = words;
+                // eslint-disable-next-line no-case-declarations
                 const employees = this.companies.find(company => company.name === companyName)?.employees;
                 if(!employees?.find(employee => employee === employeeName)){
                     employees?.push(employeeName)

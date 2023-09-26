@@ -17,6 +17,9 @@ The index.txt file contains the same sample
 ## Run unit tests
 ```npm test```
 
+## Run eslint
+```npm run lint```
+
 
 # Design Approach
 Node/Typescript were chosen due moslty to recent familiarity. This problem may or may not lend itself to languages with built in OOP instead of runtime OOP on top with typescript. 

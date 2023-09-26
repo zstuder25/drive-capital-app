@@ -2,7 +2,7 @@ enum ContactType {
     email,
     coffee,
     call
-};
+}
 
 type Partner = string;
 
