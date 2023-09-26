@@ -12,6 +12,22 @@ export default class TextProcessor {
 
     private getCompanyContactList = (company: Company): Array<Contact> => this.contacts.filter(contact => company.employees.includes(contact.employee));
 
+    private getTopPartnerForCompany = (companyContacts: Array<Contact>): {partner: string, contactCount: number} => {
+        const partnerContacts: Array<{partner: string, contactCount: number}> = [];
+        companyContacts.forEach(contact => {
+            const pcIndex = partnerContacts.findIndex(pc => pc.partner === contact.partner);
+            if(pcIndex > -1){
+                partnerContacts[pcIndex].contactCount = partnerContacts[pcIndex].contactCount + 1;
+            } else {
+                partnerContacts.push({partner: contact.partner, contactCount: 1})
+            }
+        });
+
+        partnerContacts.sort((a, b) => a.contactCount > b.contactCount ? -1 : 1);
+
+        return partnerContacts[0];
+    }
+
     processLine = (lineInput: string) => {
         const words = lineInput.split(" ");
         const inputType = words[0];
@@ -52,18 +68,9 @@ export default class TextProcessor {
         this.companies.forEach(company => {
             const companyContacts = this.getCompanyContactList(company);
             if(companyContacts.length > 0){
-                const partnerContacts: Array<{partner: string, contactCount: number}> = [];
-                companyContacts.forEach(contact => {
-                    const pcIndex = partnerContacts.findIndex(pc => pc.partner === contact.partner);
-                    if(pcIndex > -1){
-                        partnerContacts[pcIndex].contactCount = partnerContacts[pcIndex].contactCount + 1;
-                    } else {
-                        partnerContacts.push({partner: contact.partner, contactCount: 1})
-                    }
-                });
-                
-                partnerContacts.sort((a, b) => a.contactCount > b.contactCount ? -1 : 1);
-                process.stdout.write(`${company.name}: ${partnerContacts[0].partner} (${partnerContacts[0].contactCount})\n`)
+                const topPartnerContact = this.getTopPartnerForCompany(companyContacts);
+
+                process.stdout.write(`${company.name}: ${topPartnerContact.partner} (${topPartnerContact.contactCount})\n`)
             } else {
                 process.stdout.write(`${company.name}: No current relationship\n`)
             }
